@@ -1,0 +1,27 @@
+.navbar-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.desktop-navbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.app-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-container {
+  margin-top: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-left: -96px;
+}

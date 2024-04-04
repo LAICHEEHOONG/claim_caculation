@@ -1,13 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  coverAmount: 0,
-  firstClaim: 0,
-  secondClaim: 0,
-  thirdClaim: 0,
-  fourthClaim: 0,
-  fifthClaim: 0,
-  valueLeft: 0
+  coverAmount: "",
+  firstClaim: "",
+  secondClaim: "",
+  thirdClaim: "",
+  fourthClaim: "",
+  fifthClaim: "",
+  valueLeft: "",
 };
 
 export const claimSlice = createSlice({
@@ -15,26 +15,55 @@ export const claimSlice = createSlice({
   initialState,
   reducers: {
     updateCoverAmount: (state, action) => {
-      state.coverAmount = parseFloat(action.payload);
+      let toNum = parseFloat(action.payload);
+      if (!toNum) {
+        toNum = 0;
+      }
+      state.coverAmount = parseFloat(toNum);
     },
     updateFirstClaim: (state, action) => {
-      state.firstClaim = parseFloat(action.payload);
+      let toNum = parseFloat(action.payload);
+      if (!toNum) {
+        toNum = 0;
+      }
+      state.firstClaim = parseFloat(toNum);
     },
     updateSecondClaim: (state, action) => {
-      state.secondClaim = parseFloat(action.payload);
+      let toNum = parseFloat(action.payload);
+      if (!toNum) {
+        toNum = 0;
+      }
+      state.secondClaim = parseFloat(toNum);
     },
     updateThirdClaim: (state, action) => {
-      state.thirdClaim = parseFloat(action.payload);
+      let toNum = parseFloat(action.payload);
+      if (!toNum) {
+        toNum = 0;
+      }
+      state.thirdClaim = parseFloat(toNum);
     },
     updateFourthClaim: (state, action) => {
-      state.fourthClaim = parseFloat(action.payload);
+      let toNum = parseFloat(action.payload);
+      if (!toNum) {
+        toNum = 0;
+      }
+      state.fourthClaim = parseFloat(toNum);
     },
     updateFifthClaim: (state, action) => {
-      state.fifthClaim = parseFloat(action.payload);
+      let toNum = parseFloat(action.payload);
+      if (!toNum) {
+        toNum = 0;
+      }
+      state.fifthClaim = parseFloat(toNum);
     },
+    updateClaim: (state, action) => {},
     updateValueLeft: (state, action) => {
-        state.valueLeft = parseFloat(action.payload);
-    }
+      let toNum = parseFloat(action.payload);
+      if (!toNum) {
+        toNum = 0;
+      }
+      state.valueLeft = parseFloat(toNum);
+    },
   },
 });
 
@@ -45,7 +74,7 @@ export const {
   updateThirdClaim,
   updateFourthClaim,
   updateFifthClaim,
-  updateValueLeft
+  updateValueLeft,
 } = claimSlice.actions;
 
 export default claimSlice.reducer;

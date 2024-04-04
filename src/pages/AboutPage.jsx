@@ -39,9 +39,9 @@ export default function AboutPage() {
             but it is usually higher or equivalent to the market value in normal
             circumstances.
           </Alert>
-          <h2>PELW BENEFIT</h2>
+          <h2 style={{color: '#4a2950'}} >PELW BENEFIT</h2>
           <TableContainer component={Paper}>
-            <Table sx={{ minWidth: 650 }} aria-label="simple table">
+            <Table sx={{ minWidth: 650}} aria-label="simple table">
               <TableHead>
                 <TableRow>
                   <TableCell align="center">JOB DESCRIPTION</TableCell>

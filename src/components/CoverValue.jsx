@@ -6,9 +6,12 @@ import PopupState, { bindTrigger, bindMenu } from "material-ui-popup-state";
 import TextField from "@mui/material/TextField";
 import { useSelector, useDispatch } from "react-redux";
 import { updateCoverAmount } from "../features/claim/claimSlice";
+import { setAlert } from "../features/alert/alertSlice";
+
 
 export default function CoverValue() {
   const state = useSelector((state) => state.claim);
+  const alert = useSelector(state => state.alert);
   const dispatch = useDispatch();
   return (
     <PopupState variant="popover" popupId="demo-popup-menu">
@@ -29,7 +32,12 @@ export default function CoverValue() {
                 variant="standard"
                 value={state.coverAmount}
                 onChange={(e) => {
-                  dispatch(updateCoverAmount(e.target.value));
+                  let value = parseFloat(e.target.value);
+                  if (isNaN(value)) {
+                    dispatch(setAlert({alert: true, alertMessage: 'Please enter only numbers.'}));
+                  } else {
+                    dispatch(updateCoverAmount(value));
+                  }
                 }}
               />
             </MenuItem>

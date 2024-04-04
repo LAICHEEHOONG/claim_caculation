@@ -60,7 +60,7 @@ const Content = ({ state }) => {
       >
         <div
           className="navbar-header"
-          style={state.limit >= 100 ? { color: "#d32f2f" } : {}}
+          style={state.limit >= 100 ? { color: "#d32f2f" } : {color: "#9C27B0"}}
         >
           <HandymanIcon
             sx={{
@@ -70,7 +70,7 @@ const Content = ({ state }) => {
               },
             }}
           />
-          <div>CLAIM CALCULATION</div>
+          <div style={state.limit >= 100 ? { color: "#d32f2f" } : {color: "#9C27B0"}}>CLAIM CALCULATION</div>
         </div>
       </Typography>
     </>
@@ -81,10 +81,11 @@ const PasswordField = ({ state, handle }) => {
   const [show, setShow] = useState(false);
 
   return (
-    <FormControl sx={{ m: 1 }} fullWidth variant="outlined">
-      <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+    <FormControl sx={{ m: 1 }} fullWidth variant="outlined" color='secondary' >
+      <InputLabel htmlFor="outlined-adornment-password" color='secondary' >Password</InputLabel>
       <OutlinedInput
         id="outlined-adornment-password"
+        color='secondary'
         type={show ? "text" : "password"}
         endAdornment={
           <InputAdornment position="end">
@@ -93,7 +94,7 @@ const PasswordField = ({ state, handle }) => {
               onClick={() => setShow((boolean) => (boolean ? false : true))}
               edge="end"
             >
-              {show ? <VisibilityOff /> : <Visibility />}
+              {show ? <VisibilityOff color='secondary' /> : <Visibility color='secondary'/>}
             </IconButton>
           </InputAdornment>
         }

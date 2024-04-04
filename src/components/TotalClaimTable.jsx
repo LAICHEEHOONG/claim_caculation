@@ -7,6 +7,8 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import TextField from "@mui/material/TextField";
+import { useSelector } from "react-redux";
+import { formatNumber } from "../utils/tool";
 
 export default function TotalCalimTable() {
   const cellColor = {
@@ -15,6 +17,18 @@ export default function TotalCalimTable() {
     color: "white",
     fontSize: "1.2rem",
   };
+  const state = useSelector(state => state.claim)
+
+  const totalClaim = () => {
+    // firstClaim: 0,
+    // secondClaim: 0,
+    // thirdClaim: 0,
+    // fourthClaim: 0,
+    // fifthClaim: 0,
+    return formatNumber(state.firstClaim + state.secondClaim + state.thirdClaim + state.fourthClaim + state.fifthClaim)
+  }
+
+
   return (
     <TableContainer component={Paper} sx={{ marginTop: "20px" }}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -24,7 +38,7 @@ export default function TotalCalimTable() {
               TOTAL CLAIM
             </TableCell>
             <TableCell align="center" sx={cellColor}>
-              RM1,000
+              RM{totalClaim()}
             </TableCell>
             <TableCell align="center" sx={cellColor}>
               TOTAL VALUE LEFT

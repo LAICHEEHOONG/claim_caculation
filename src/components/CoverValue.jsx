@@ -9,7 +9,7 @@ import { updateCoverAmount } from "../features/claim/claimSlice";
 
 export default function CoverValue() {
   const state = useSelector((state) => state.claim);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   return (
     <PopupState variant="popover" popupId="demo-popup-menu">
       {(popupState) => (
@@ -29,12 +29,10 @@ export default function CoverValue() {
                 variant="standard"
                 value={state.coverAmount}
                 onChange={(e) => {
-                  dispatch(updateCoverAmount(e.target.value))
+                  dispatch(updateCoverAmount(e.target.value));
                 }}
               />
             </MenuItem>
-            {/* <MenuItem onClick={popupState.close}>My account</MenuItem>
-            <MenuItem onClick={popupState.close}>Logout</MenuItem> */}
           </Menu>
         </React.Fragment>
       )}

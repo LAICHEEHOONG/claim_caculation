@@ -10,10 +10,41 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import CoverValue from "./CoverValue";
 import { useSelector, useDispatch } from "react-redux";
+import {
+  updateFirstClaim,
+  updateSecondClaim,
+  updateThirdClaim,
+  updateFourthClaim,
+  updateFifthClaim,
+  updateValueLeft,
+} from "../features/claim/claimSlice";
+import { formatNumber } from "../utils/tool";
 
 export default function ClaimTable() {
+  const state = useSelector((state) => state.claim);
+  const dispatch = useDispatch();
 
-  const state = useSelector(state => state.claim)
+  const firstYear = () => {
+    return state.coverAmount - state.firstClaim;
+  };
+  const secondYear = () => {
+    let result = (firstYear() * 70) / 100;
+    return result - state.secondClaim;
+  };
+  const thirdYear = () => {
+    let result = (secondYear() * 70) / 100;
+    return result - state.thirdClaim;
+  };
+  const fourthYear = () => {
+    let result = (thirdYear() * 70) / 100;
+    return result - state.fourthClaim;
+  };
+  const fifthYear = () => {
+    let result = (fourthYear() * 70) / 100;
+    result = result - state.fifthClaim;
+    dispatch(updateValueLeft(result));
+    return result;
+  };
 
   return (
     <TableContainer component={Paper}>
@@ -40,9 +71,13 @@ export default function ClaimTable() {
                 label="RM"
                 variant="standard"
                 sx={{ width: "100px" }}
+                value={state.firstClaim}
+                onChange={(e) => {
+                  dispatch(updateFirstClaim(e.target.value));
+                }}
               />
             </TableCell>
-            <TableCell align="center">RM4000</TableCell>
+            <TableCell align="center">RM{firstYear()}</TableCell>
           </TableRow>
 
           <TableRow sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
@@ -56,9 +91,13 @@ export default function ClaimTable() {
                 label="RM"
                 variant="standard"
                 sx={{ width: "100px" }}
+                value={state.secondClaim}
+                onChange={(e) => {
+                  dispatch(updateSecondClaim(e.target.value));
+                }}
               />
             </TableCell>
-            <TableCell align="center">RM</TableCell>
+            <TableCell align="center">RM{secondYear()}</TableCell>
           </TableRow>
 
           <TableRow sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
@@ -72,9 +111,13 @@ export default function ClaimTable() {
                 label="RM"
                 variant="standard"
                 sx={{ width: "100px" }}
+                value={state.thirdClaim}
+                onChange={(e) => {
+                  dispatch(updateThirdClaim(e.target.value));
+                }}
               />
             </TableCell>
-            <TableCell align="center">RM</TableCell>
+            <TableCell align="center">RM{thirdYear()}</TableCell>
           </TableRow>
 
           <TableRow sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
@@ -88,9 +131,13 @@ export default function ClaimTable() {
                 label="RM"
                 variant="standard"
                 sx={{ width: "100px" }}
+                value={state.fourthClaim}
+                onChange={(e) => {
+                  dispatch(updateFourthClaim(e.target.value));
+                }}
               />
             </TableCell>
-            <TableCell align="center">RM</TableCell>
+            <TableCell align="center">RM{fourthYear()}</TableCell>
           </TableRow>
 
           <TableRow sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
@@ -104,9 +151,13 @@ export default function ClaimTable() {
                 label="RM"
                 variant="standard"
                 sx={{ width: "100px" }}
+                value={state.fifthClaim}
+                onChange={(e) => {
+                  dispatch(updateFifthClaim(e.target.value));
+                }}
               />
             </TableCell>
-            <TableCell align="center">RM</TableCell>
+            <TableCell align="center">RM{fifthYear()}</TableCell>
           </TableRow>
         </TableBody>
       </Table>

@@ -2,11 +2,12 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   coverAmount: 0,
-  firstYear: 0,
-  secondYear: 0,
-  thirdYear: 0,
-  fourthYear: 0,
-  fifthYear: 0,
+  firstClaim: 0,
+  secondClaim: 0,
+  thirdClaim: 0,
+  fourthClaim: 0,
+  fifthClaim: 0,
+  valueLeft: 0
 };
 
 export const claimSlice = createSlice({
@@ -14,22 +15,37 @@ export const claimSlice = createSlice({
   initialState,
   reducers: {
     updateCoverAmount: (state, action) => {
-        state.coverAmount = action.payload
+      state.coverAmount = parseFloat(action.payload);
     },
-    // updateSize: (state, action) => {
-    //   if (action.payload !== 0) {
-    //     state.size = action.payload / 50;
-    //   } else {
-    //     state.size = 0;
-    //   }
-
-    //   const { width, height } = getElementDimensionsInMM();
-    //   state.width = width.toFixed(0);
-    //   state.height = height.toFixed(0);
-    // },
+    updateFirstClaim: (state, action) => {
+      state.firstClaim = parseFloat(action.payload);
+    },
+    updateSecondClaim: (state, action) => {
+      state.secondClaim = parseFloat(action.payload);
+    },
+    updateThirdClaim: (state, action) => {
+      state.thirdClaim = parseFloat(action.payload);
+    },
+    updateFourthClaim: (state, action) => {
+      state.fourthClaim = parseFloat(action.payload);
+    },
+    updateFifthClaim: (state, action) => {
+      state.fifthClaim = parseFloat(action.payload);
+    },
+    updateValueLeft: (state, action) => {
+        state.valueLeft = parseFloat(action.payload);
+    }
   },
 });
 
-export const { updateCoverAmount } = claimSlice.actions;
+export const {
+  updateCoverAmount,
+  updateFirstClaim,
+  updateSecondClaim,
+  updateThirdClaim,
+  updateFourthClaim,
+  updateFifthClaim,
+  updateValueLeft
+} = claimSlice.actions;
 
 export default claimSlice.reducer;

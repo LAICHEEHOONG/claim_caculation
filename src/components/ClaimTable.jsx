@@ -9,8 +9,12 @@ import Paper from "@mui/material/Paper";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import CoverValue from "./CoverValue";
+import { useSelector, useDispatch } from "react-redux";
 
 export default function ClaimTable() {
+
+  const state = useSelector(state => state.claim)
+
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -21,7 +25,6 @@ export default function ClaimTable() {
             <TableCell align="center">CLAIM</TableCell>
             <TableCell align="center">
               <CoverValue />
-              {/* <Button variant="contained" color='secondary'>VALUE COVER BY PELW</Button> */}
             </TableCell>
           </TableRow>
         </TableHead>

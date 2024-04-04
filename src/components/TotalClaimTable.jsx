@@ -17,7 +17,7 @@ export default function TotalCalimTable() {
     color: "white",
     fontSize: "1.2rem",
   };
-  const state = useSelector(state => state.claim)
+  const state = useSelector((state) => state.claim);
 
   const totalClaim = () => {
     // firstClaim: 0,
@@ -25,9 +25,14 @@ export default function TotalCalimTable() {
     // thirdClaim: 0,
     // fourthClaim: 0,
     // fifthClaim: 0,
-    return formatNumber(state.firstClaim + state.secondClaim + state.thirdClaim + state.fourthClaim + state.fifthClaim)
-  }
-
+    return formatNumber(
+      state.firstClaim +
+        state.secondClaim +
+        state.thirdClaim +
+        state.fourthClaim +
+        state.fifthClaim
+    );
+  };
 
   return (
     <TableContainer component={Paper} sx={{ marginTop: "20px" }}>
@@ -44,7 +49,7 @@ export default function TotalCalimTable() {
               TOTAL VALUE LEFT
             </TableCell>
             <TableCell align="center" sx={cellColor}>
-              RM573.3
+              RM{state.valueLeft}
             </TableCell>
           </TableRow>
         </TableHead>

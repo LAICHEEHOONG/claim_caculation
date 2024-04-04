@@ -8,7 +8,8 @@ import Paper from "@mui/material/Paper";
 import { useSelector } from "react-redux";
 import { formatNumber } from "../utils/tool";
 
-export default function TotalCalimTable() {
+export default function TotalClaimTable({totalLeft}) {
+
   const cellColor = {
     backgroundColor: "#9C27B0",
     borderColor: "#9C27B0",
@@ -18,13 +19,28 @@ export default function TotalCalimTable() {
   const state = useSelector((state) => state.claim);
 
   const totalClaim = () => {
-    return formatNumber(
-      state.firstClaim +
-        state.secondClaim +
-        state.thirdClaim +
-        state.fourthClaim +
-        state.fifthClaim
-    );
+    let first = state.firstClaim;
+    let second = state.secondClaim;
+    let third = state.thirdClaim;
+    let fourth = state.fourthClaim;
+    let fifth = state.fifthClaim;
+    if (isNaN(first)) {
+      first = 0;
+    }
+    if (isNaN(second)) {
+      second = 0;
+    }
+    if (isNaN(third)) {
+      third = 0;
+    }
+    if (isNaN(fourth)) {
+      fourth = 0;
+    }
+    if (isNaN(fifth)) {
+      fifth = 0;
+    }
+
+    return formatNumber(first + second + third + fourth + fifth);
   };
 
   return (
@@ -42,7 +58,7 @@ export default function TotalCalimTable() {
               TOTAL VALUE LEFT
             </TableCell>
             <TableCell align="center" sx={cellColor}>
-              RM{state.valueLeft.toFixed(2)}
+              RM{totalLeft()}
             </TableCell>
           </TableRow>
         </TableHead>

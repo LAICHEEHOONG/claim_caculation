@@ -14,7 +14,6 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-import LocalOfferIcon from "@mui/icons-material/LocalOffer";
 import { useNavigate, useLocation } from "react-router-dom";
 import HomeIcon from "@mui/icons-material/Home";
 import HandymanIcon from "@mui/icons-material/Handyman";

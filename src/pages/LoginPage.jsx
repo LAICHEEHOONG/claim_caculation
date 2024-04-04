@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import Typography from "@mui/material/Typography";
-import LocalOfferIcon from "@mui/icons-material/LocalOffer";
-import HandymanIcon from '@mui/icons-material/Handyman';
+import HandymanIcon from "@mui/icons-material/Handyman";
 import IconButton from "@mui/material/IconButton";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import InputLabel from "@mui/material/InputLabel";
@@ -9,12 +8,8 @@ import InputAdornment from "@mui/material/InputAdornment";
 import FormControl from "@mui/material/FormControl";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import { useEffect, useState } from "react";
-import {
-  generateWebPassword,
-  generateClientPassword,
-} from "../features/login/loginSlice";
-import BackdropProgress from "../components/BackdropProgress";
+import { useState } from "react";
+import { generateClientPassword } from "../features/login/loginSlice";
 import LockMessage from "../components/LockMessage";
 
 export default function LoginPage() {
@@ -31,14 +26,10 @@ export default function LoginPage() {
 
   return (
     <div style={loginPageContainer()}>
-      {state.loading ? (
-        <BackdropProgress />
-      ) : (
-        <div>
-          <Content {...props} />
-          {state.limit >= 100 ? <LockMessage /> : <PasswordField {...props} />}
-        </div>
-      )}
+      <div>
+        <Content {...props} />
+        {state.limit >= 100 ? <LockMessage /> : <PasswordField {...props} />}
+      </div>
     </div>
   );
 }
@@ -60,7 +51,9 @@ const Content = ({ state }) => {
       >
         <div
           className="navbar-header"
-          style={state.limit >= 100 ? { color: "#d32f2f" } : {color: "#9C27B0"}}
+          style={
+            state.limit >= 100 ? { color: "#d32f2f" } : { color: "#9C27B0" }
+          }
         >
           <HandymanIcon
             sx={{
@@ -70,7 +63,13 @@ const Content = ({ state }) => {
               },
             }}
           />
-          <div style={state.limit >= 100 ? { color: "#d32f2f" } : {color: "#9C27B0"}}>CLAIM CALCULATION</div>
+          <div
+            style={
+              state.limit >= 100 ? { color: "#d32f2f" } : { color: "#9C27B0" }
+            }
+          >
+            CLAIM CALCULATION
+          </div>
         </div>
       </Typography>
     </>
@@ -81,11 +80,13 @@ const PasswordField = ({ state, handle }) => {
   const [show, setShow] = useState(false);
 
   return (
-    <FormControl sx={{ m: 1 }} fullWidth variant="outlined" color='secondary' >
-      <InputLabel htmlFor="outlined-adornment-password" color='secondary' >Password</InputLabel>
+    <FormControl sx={{ m: 1 }} fullWidth variant="outlined" color="secondary">
+      <InputLabel htmlFor="outlined-adornment-password" color="secondary">
+        Password
+      </InputLabel>
       <OutlinedInput
         id="outlined-adornment-password"
-        color='secondary'
+        color="secondary"
         type={show ? "text" : "password"}
         endAdornment={
           <InputAdornment position="end">
@@ -94,7 +95,11 @@ const PasswordField = ({ state, handle }) => {
               onClick={() => setShow((boolean) => (boolean ? false : true))}
               edge="end"
             >
-              {show ? <VisibilityOff color='secondary' /> : <Visibility color='secondary'/>}
+              {show ? (
+                <VisibilityOff color="secondary" />
+              ) : (
+                <Visibility color="secondary" />
+              )}
             </IconButton>
           </InputAdornment>
         }

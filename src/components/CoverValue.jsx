@@ -5,7 +5,7 @@ import MenuItem from "@mui/material/MenuItem";
 import PopupState, { bindTrigger, bindMenu } from "material-ui-popup-state";
 import TextField from "@mui/material/TextField";
 import { useSelector, useDispatch } from "react-redux";
-import { updateCoverAmount } from "../features/claim/claimSlice";
+import { updateCoverAmount, reset } from "../features/claim/claimSlice";
 import { setAlert } from "../features/alert/alertSlice";
 
 export default function CoverValue() {
@@ -24,27 +24,41 @@ export default function CoverValue() {
           </Button>
           <Menu {...bindMenu(popupState)}>
             <MenuItem>
-            
-              <TextField
-                id="filled-basic"
-                label="VALUE"
-                variant="standard"
-                color="secondary"
-                value={state.coverAmount}
-                onChange={(e) => {
-                  let value = e.target.value;
-                  if (isNaN(value)) {
-                    dispatch(
-                      setAlert({
-                        alert: true,
-                        alertMessage: "Please enter only numbers.",
-                      })
-                    );
-                  } else {
-                    dispatch(updateCoverAmount(e.target.value));
-                  }
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  gap: "20px",
                 }}
-              />
+              >
+                <TextField
+                  id="filled-basic"
+                  label="VALUE"
+                  variant="standard"
+                  color="secondary"
+                  value={state.coverAmount}
+                  onChange={(e) => {
+                    let value = e.target.value;
+                    if (isNaN(value)) {
+                      dispatch(
+                        setAlert({
+                          alert: true,
+                          alertMessage: "Please enter only numbers.",
+                        })
+                      );
+                    } else {
+                      dispatch(updateCoverAmount(e.target.value));
+                    }
+                  }}
+                />
+                <Button fullWidth color="secondary" onClick={() => {
+                  dispatch(reset())
+                }}>
+                  RESET
+                </Button>
+              </div>
             </MenuItem>
           </Menu>
         </React.Fragment>

@@ -40,9 +40,15 @@ export const claimSlice = createSlice({
         (parseFloat(state.fourthClaim) || 0) +
         (parseFloat(state.fifthClaim) || 0);
     },
-    // updateTotalClaim: (state) => {
-    //   state.totalClaim = parseFloat(state.firstClaim) + parseFloat(state.secondClaim )+ parseFloat(state.thirdClaim) + parseFloat(state.fourthClaim) + parseFloat(state.fifthClaim)
-    // }
+    reset: (state) => {
+      state.coverAmount = "";
+      state.firstClaim = "";
+      state.secondClaim = "";
+      state.thirdClaim = "";
+      state.fourthClaim = "";
+      state.fifthClaim = "";
+      state.totalClaim = "";
+    },
   },
 });
 
@@ -54,6 +60,7 @@ export const {
   updateFourthClaim,
   updateFifthClaim,
   updateTotalClaim,
+  reset
 } = claimSlice.actions;
 
 export default claimSlice.reducer;

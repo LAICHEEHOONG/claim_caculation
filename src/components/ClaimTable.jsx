@@ -27,21 +27,33 @@ export default function ClaimTable() {
     return (state.coverAmount - state.firstClaim).toFixed(2);
   };
   const secondYear = () => {
-    let result = (firstYear() * 70) / 100;
-    return (result - state.secondClaim).toFixed(2);
+    let result = ((firstYear() - state.secondClaim) * 70) / 100;
+    result = result.toFixed(2);
+    return result;
+    // let result = (firstYear() * 70) / 100;
+    // return (result - state.secondClaim).toFixed(2);
   };
   const thirdYear = () => {
-    let result = (secondYear() * 70) / 100;
-    return (result - state.thirdClaim).toFixed(2);
+    let result = ((secondYear() - state.thirdClaim) * 70) / 100;
+    result = result.toFixed(2);
+    return result;
+    // let result = (secondYear() * 70) / 100;
+    // return (result - state.thirdClaim).toFixed(2);
   };
   const fourthYear = () => {
-    let result = (thirdYear() * 70) / 100;
-    return (result - state.fourthClaim).toFixed(2);
+    let result = ((thirdYear() - state.fourthClaim) * 70) / 100;
+    result = result.toFixed(2);
+    return result;
+    // let result = (thirdYear() * 70) / 100;
+    // return (result - state.fourthClaim).toFixed(2);
   };
   const fifthYear = () => {
-    let result = (fourthYear() * 70) / 100;
-    result = (result - state.fifthClaim).toFixed(2);
+    let result = ((fourthYear() - state.fifthClaim) * 70) / 100;
+    result = result.toFixed(2);
     return result;
+    // let result = (fourthYear() * 70) / 100;
+    // result = (result - state.fifthClaim).toFixed(2);
+    // return result;
   };
 
   return (

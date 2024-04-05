@@ -6,7 +6,6 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { useSelector } from "react-redux";
-import { formatNumber } from "../utils/tool";
 
 export default function TotalClaimTable({ totalLeft }) {
   const cellColor = {
@@ -16,8 +15,6 @@ export default function TotalClaimTable({ totalLeft }) {
     fontSize: "1.2rem",
   };
   const state = useSelector((state) => state.claim);
-
-
 
   return (
     <TableContainer component={Paper} sx={{ marginTop: "20px" }}>

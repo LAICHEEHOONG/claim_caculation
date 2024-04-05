@@ -12,7 +12,6 @@ const rootReducer = combineReducers({
   alert: alertReducer,
 });
 
-// Configure `redux-persist`
 const persistConfig = {
   key: "root",
   storage,

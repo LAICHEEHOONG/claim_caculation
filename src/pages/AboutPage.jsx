@@ -30,16 +30,16 @@ export default function AboutPage() {
               Calculation
             </AlertTitle>
             The total amount of repair and replacement in a year shall not
-            exceed the product yearly internal value which is determined at 70%
-            of the previous year unclaimed internal value(product internal value
-            in the first year is equivalent to the purchase price of the
+            exceed the product yearly internal value, which is determined at 70%
+            of the previous year's unclaimed internal value (product internal
+            value in the first year is equivalent to the purchase price of the
             product). An internal value might not be the same as market value,
             but it is usually higher or equivalent to the market value in normal
             circumstances.
           </Alert>
-          <h2 style={{color: '#4a2950'}} >PELW BENEFIT</h2>
+          <h2 style={{ color: "#4a2950" }}>PELW BENEFIT</h2>
           <TableContainer component={Paper}>
-            <Table sx={{ minWidth: 650}} aria-label="simple table">
+            <Table sx={{ minWidth: 650 }} aria-label="simple table">
               <TableHead>
                 <TableRow>
                   <TableCell align="center">JOB DESCRIPTION</TableCell>

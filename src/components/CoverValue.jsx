@@ -24,13 +24,15 @@ export default function CoverValue() {
           </Button>
           <Menu {...bindMenu(popupState)}>
             <MenuItem>
+            
               <TextField
                 id="filled-basic"
-                label="VALUE COVER BY PELW"
+                label="VALUE"
                 variant="standard"
+                color="secondary"
                 value={state.coverAmount}
                 onChange={(e) => {
-                  let value = parseFloat(e.target.value);
+                  let value = e.target.value;
                   if (isNaN(value)) {
                     dispatch(
                       setAlert({
@@ -38,8 +40,9 @@ export default function CoverValue() {
                         alertMessage: "Please enter only numbers.",
                       })
                     );
+                  } else {
+                    dispatch(updateCoverAmount(e.target.value));
                   }
-                  dispatch(updateCoverAmount(value));
                 }}
               />
             </MenuItem>

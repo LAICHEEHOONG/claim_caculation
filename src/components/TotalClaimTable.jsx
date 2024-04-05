@@ -8,8 +8,7 @@ import Paper from "@mui/material/Paper";
 import { useSelector } from "react-redux";
 import { formatNumber } from "../utils/tool";
 
-export default function TotalClaimTable({totalLeft}) {
-
+export default function TotalClaimTable({ totalLeft }) {
   const cellColor = {
     backgroundColor: "#9C27B0",
     borderColor: "#9C27B0",
@@ -18,30 +17,7 @@ export default function TotalClaimTable({totalLeft}) {
   };
   const state = useSelector((state) => state.claim);
 
-  const totalClaim = () => {
-    let first = state.firstClaim;
-    let second = state.secondClaim;
-    let third = state.thirdClaim;
-    let fourth = state.fourthClaim;
-    let fifth = state.fifthClaim;
-    if (isNaN(first)) {
-      first = 0;
-    }
-    if (isNaN(second)) {
-      second = 0;
-    }
-    if (isNaN(third)) {
-      third = 0;
-    }
-    if (isNaN(fourth)) {
-      fourth = 0;
-    }
-    if (isNaN(fifth)) {
-      fifth = 0;
-    }
 
-    return formatNumber(first + second + third + fourth + fifth);
-  };
 
   return (
     <TableContainer component={Paper} sx={{ marginTop: "20px" }}>
@@ -52,7 +28,7 @@ export default function TotalClaimTable({totalLeft}) {
               TOTAL CLAIM
             </TableCell>
             <TableCell align="center" sx={cellColor}>
-              RM{totalClaim()}
+              RM{state.totalClaim}
             </TableCell>
             <TableCell align="center" sx={cellColor}>
               TOTAL VALUE LEFT

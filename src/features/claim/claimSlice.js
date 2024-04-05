@@ -7,7 +7,7 @@ const initialState = {
   thirdClaim: "",
   fourthClaim: "",
   fifthClaim: "",
-  valueLeft: "",
+  totalClaim: "",
 };
 
 export const claimSlice = createSlice({
@@ -15,54 +15,34 @@ export const claimSlice = createSlice({
   initialState,
   reducers: {
     updateCoverAmount: (state, action) => {
-      let toNum = parseFloat(action.payload);
-      if (!toNum) {
-        toNum = 0;
-      }
-      state.coverAmount = parseFloat(toNum);
+      state.coverAmount = action.payload;
     },
     updateFirstClaim: (state, action) => {
-      let toNum = parseFloat(action.payload);
-      if (!toNum) {
-        toNum = 0;
-      }
-      state.firstClaim = parseFloat(toNum);
+      state.firstClaim = action.payload;
     },
     updateSecondClaim: (state, action) => {
-      let toNum = parseFloat(action.payload);
-      if (!toNum) {
-        toNum = 0;
-      }
-      state.secondClaim = parseFloat(toNum);
+      state.secondClaim = action.payload;
     },
     updateThirdClaim: (state, action) => {
-      let toNum = parseFloat(action.payload);
-      if (!toNum) {
-        toNum = 0;
-      }
-      state.thirdClaim = parseFloat(toNum);
+      state.thirdClaim = action.payload;
     },
     updateFourthClaim: (state, action) => {
-      let toNum = parseFloat(action.payload);
-      if (!toNum) {
-        toNum = 0;
-      }
-      state.fourthClaim = parseFloat(toNum);
+      state.fourthClaim = action.payload;
     },
     updateFifthClaim: (state, action) => {
-      let toNum = parseFloat(action.payload);
-      if (!toNum) {
-        toNum = 0;
-      }
-      state.fifthClaim = parseFloat(toNum);
+      state.fifthClaim = action.payload;
     },
-    updateValueLeft: (state, action) => {
-      let toNum = parseFloat(action.payload);
-      if (!toNum) {
-        toNum = 0;
-      }
-      state.valueLeft = parseFloat(toNum);
+    updateTotalClaim: (state) => {
+      state.totalClaim =
+        (parseFloat(state.firstClaim) || 0) +
+        (parseFloat(state.secondClaim) || 0) +
+        (parseFloat(state.thirdClaim) || 0) +
+        (parseFloat(state.fourthClaim) || 0) +
+        (parseFloat(state.fifthClaim) || 0);
     },
+    // updateTotalClaim: (state) => {
+    //   state.totalClaim = parseFloat(state.firstClaim) + parseFloat(state.secondClaim )+ parseFloat(state.thirdClaim) + parseFloat(state.fourthClaim) + parseFloat(state.fifthClaim)
+    // }
   },
 });
 
@@ -73,31 +53,7 @@ export const {
   updateThirdClaim,
   updateFourthClaim,
   updateFifthClaim,
-  updateValueLeft,
+  updateTotalClaim,
 } = claimSlice.actions;
 
 export default claimSlice.reducer;
-
-
-
-// const firstYear = () => {
-//   return (state.coverAmount - state.firstClaim).toFixed(2);
-// };
-// const secondYear = () => {
-//   let result = (firstYear() * 70) / 100;
-//   return (result - state.secondClaim).toFixed(2);
-// };
-// const thirdYear = () => {
-//   let result = (secondYear() * 70) / 100;
-//   return (result - state.thirdClaim).toFixed(2);
-// };
-// const fourthYear = () => {
-//   let result = (thirdYear() * 70) / 100;
-//   return (result - state.fourthClaim).toFixed(2);
-// };
-// const fifthYear = () => {
-//   let result = (fourthYear() * 70) / 100;
-//   result = (result - state.fifthClaim).toFixed(2);
-//   // dispatch(updateValueLeft(result));
-//   return result;
-// };

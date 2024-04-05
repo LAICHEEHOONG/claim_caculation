@@ -1,5 +1,3 @@
-import { useEffect } from "react";
-
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -16,7 +14,7 @@ import {
   updateThirdClaim,
   updateFourthClaim,
   updateFifthClaim,
-  updateValueLeft,
+  updateTotalClaim,
 } from "../features/claim/claimSlice";
 import { setAlert } from "../features/alert/alertSlice";
 import TotalClaimTable from "./TotalClaimTable";
@@ -43,7 +41,6 @@ export default function ClaimTable() {
   const fifthYear = () => {
     let result = (fourthYear() * 70) / 100;
     result = (result - state.fifthClaim).toFixed(2);
-    // dispatch(updateValueLeft(result));
     return result;
   };
 
@@ -77,7 +74,7 @@ export default function ClaimTable() {
                   sx={{ width: "100px" }}
                   value={state.firstClaim}
                   onChange={(e) => {
-                    let value = parseFloat(e.target.value);
+                    let value = e.target.value;
                     if (isNaN(value)) {
                       dispatch(
                         setAlert({
@@ -85,8 +82,10 @@ export default function ClaimTable() {
                           alertMessage: "Please enter only numbers.",
                         })
                       );
+                    } else {
+                      dispatch(updateFirstClaim(value));
+                      dispatch(updateTotalClaim());
                     }
-                    dispatch(updateFirstClaim(value));
                   }}
                 />
               </TableCell>
@@ -108,7 +107,7 @@ export default function ClaimTable() {
                   sx={{ width: "100px" }}
                   value={state.secondClaim}
                   onChange={(e) => {
-                    let value = parseFloat(e.target.value);
+                    let value = e.target.value;
                     if (isNaN(value)) {
                       dispatch(
                         setAlert({
@@ -116,8 +115,10 @@ export default function ClaimTable() {
                           alertMessage: "Please enter only numbers.",
                         })
                       );
+                    } else {
+                      dispatch(updateSecondClaim(value));
+                      dispatch(updateTotalClaim());
                     }
-                    dispatch(updateSecondClaim(value));
                   }}
                 />
               </TableCell>
@@ -139,7 +140,7 @@ export default function ClaimTable() {
                   sx={{ width: "100px" }}
                   value={state.thirdClaim}
                   onChange={(e) => {
-                    let value = parseFloat(e.target.value);
+                    let value = e.target.value;
                     if (isNaN(value)) {
                       dispatch(
                         setAlert({
@@ -147,8 +148,10 @@ export default function ClaimTable() {
                           alertMessage: "Please enter only numbers.",
                         })
                       );
+                    } else {
+                      dispatch(updateThirdClaim(value));
+                      dispatch(updateTotalClaim());
                     }
-                    dispatch(updateThirdClaim(value));
                   }}
                 />
               </TableCell>
@@ -170,7 +173,7 @@ export default function ClaimTable() {
                   sx={{ width: "100px" }}
                   value={state.fourthClaim}
                   onChange={(e) => {
-                    let value = parseFloat(e.target.value);
+                    let value = e.target.value;
                     if (isNaN(value)) {
                       dispatch(
                         setAlert({
@@ -178,8 +181,10 @@ export default function ClaimTable() {
                           alertMessage: "Please enter only numbers.",
                         })
                       );
+                    } else {
+                      dispatch(updateFourthClaim(value));
+                      dispatch(updateTotalClaim());
                     }
-                    dispatch(updateFourthClaim(value));
                   }}
                 />
               </TableCell>
@@ -201,7 +206,7 @@ export default function ClaimTable() {
                   sx={{ width: "100px" }}
                   value={state.fifthClaim}
                   onChange={(e) => {
-                    let value = parseFloat(e.target.value);
+                    let value = e.target.value;
                     if (isNaN(value)) {
                       dispatch(
                         setAlert({
@@ -209,8 +214,10 @@ export default function ClaimTable() {
                           alertMessage: "Please enter only numbers.",
                         })
                       );
+                    } else {
+                      dispatch(updateFifthClaim(value));
+                      dispatch(updateTotalClaim());
                     }
-                    dispatch(updateFifthClaim(value));
                   }}
                 />
               </TableCell>

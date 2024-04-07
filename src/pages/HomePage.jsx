@@ -6,7 +6,6 @@ export default function HomePage() {
     <div className="home-container">
       <h2 style={{color: '#4a2950'}}>CLAIM CALCULATION</h2>
       <ClaimTable />
-      {/* <TotalClaimTable /> */}
     </div>
   );
 }

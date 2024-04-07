@@ -92,7 +92,13 @@ export default function ClaimTable() {
                   }}
                 />
               </TableCell>
-              <TableCell align="center">RM{firstYear()}</TableCell>
+
+              <TableCell
+                align="center"
+                sx={{ color: firstYear() < 0 ? "#FF407D" : "inherit" }}
+              >
+                RM{firstYear()}
+              </TableCell>
             </TableRow>
 
             <TableRow
@@ -125,7 +131,13 @@ export default function ClaimTable() {
                   }}
                 />
               </TableCell>
-              <TableCell align="center">RM{secondYear()}</TableCell>
+
+              <TableCell
+                sx={{ color: secondYear() < 0 ? "#FF407D" : "inherit" }}
+                align="center"
+              >
+                RM{secondYear()}
+              </TableCell>
             </TableRow>
 
             <TableRow
@@ -158,7 +170,12 @@ export default function ClaimTable() {
                   }}
                 />
               </TableCell>
-              <TableCell align="center">RM{thirdYear()}</TableCell>
+              <TableCell
+                align="center"
+                sx={{ color: thirdYear() < 0 ? "#FF407D" : "inherit" }}
+              >
+                RM{thirdYear()}
+              </TableCell>
             </TableRow>
 
             <TableRow
@@ -191,7 +208,12 @@ export default function ClaimTable() {
                   }}
                 />
               </TableCell>
-              <TableCell align="center">RM{fourthYear()}</TableCell>
+              <TableCell
+                align="center"
+                sx={{ color: fourthYear() < 0 ? "#FF407D" : "inherit" }}
+              >
+                RM{fourthYear()}
+              </TableCell>
             </TableRow>
 
             <TableRow
@@ -224,7 +246,12 @@ export default function ClaimTable() {
                   }}
                 />
               </TableCell>
-              <TableCell align="center">RM{fifthYear()}</TableCell>
+              <TableCell
+                align="center"
+                sx={{ color: fifthYear() < 0 ? "#FF407D" : "inherit" }}
+              >
+                RM{fifthYear()}
+              </TableCell>
             </TableRow>
           </TableBody>
         </Table>
